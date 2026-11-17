@@ -1,0 +1,15 @@
+import axios from 'axios';
+
+async function fetchcontent() {
+  try {
+    const response = await axios.get('http://localhost:3000/menu/getmenu');
+    const snacksBeveragesItems = response.data.filter((item) => item.categories === 'HotWitches');
+
+    return snacksBeveragesItems;
+  } catch (error) {
+    console.error('Error fetching menu:', error);
+    throw error;
+  }
+}
+
+export default fetchcontent;
